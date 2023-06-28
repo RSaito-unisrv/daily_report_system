@@ -12,9 +12,14 @@ import constants.ForwardConst;
 import constants.JpaConst;
 import services.ReportService;
 
+/**
+ * トップページに関する処理を行うActionクラス
+ *
+ */
 public class TopAction extends ActionBase {
 
     private ReportService service;
+
     /**
      * indexメソッドを実行する
      */
@@ -22,6 +27,7 @@ public class TopAction extends ActionBase {
     public void process() throws ServletException, IOException {
 
         service = new ReportService();
+
         //メソッドを実行
         invoke();
 
@@ -34,7 +40,7 @@ public class TopAction extends ActionBase {
      */
     public void index() throws ServletException, IOException {
 
-      //セッションからログイン中の従業員情報を取得
+        //セッションからログイン中の従業員情報を取得
         EmployeeView loginEmployee = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
 
         //ログイン中の従業員が作成した日報データを、指定されたページ数の一覧画面に表示する分取得する
@@ -59,6 +65,5 @@ public class TopAction extends ActionBase {
         //一覧画面を表示
         forward(ForwardConst.FW_TOP_INDEX);
     }
-    // TODO 自動生成されたメソッド・スタブ
 
 }
